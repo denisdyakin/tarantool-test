@@ -1,5 +1,7 @@
 package ru.denisdyakin.luaLogic;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.tarantool.TarantoolConnection16;
 import org.apache.commons.io.IOUtils;
 
@@ -9,6 +11,7 @@ import javax.annotation.PreDestroy;
  * Created by ddyakin on 22.06.16.
  */
 public class TarantoolScriptCaller extends AbstractScriptCaller {
+    private static final Logger LOGGER = LoggerFactory.getLogger("STDOUT");
 
     private String luaFileName = null;
     private String script;
@@ -38,12 +41,21 @@ public class TarantoolScriptCaller extends AbstractScriptCaller {
        return null;
     }
 
+    public Object executeCode(String code)
+    {
+        if (code != null)
+        {
+            return getConnection16().eval(code);
+        }
+        return null;
+    }
+
     private void loadScript()
     {
         try {
             this.script = IOUtils.toString(this.getClass().getClassLoader().getResourceAsStream(this.luaFileName));
         } catch (Exception ex) {
-            //log
+            LOGGER.error("Can't load script file.");
         }
     }
 
