@@ -10,14 +10,14 @@
     <tbody >
         <tr>
             <th>
-                Input Lua-code
+                Input Lua code
             </th>
         </tr>
         <tr>
             <td>
                 <form method="POST" action="/executeLua">
-                    <textarea name="code" cols="40" rows="15"></textarea>
-                    <input type="submit" value="Execute" />
+                    <p><textarea name="code" cols="40" rows="15"></textarea></p>
+                    <p align="center"><input type="submit" value="Execute" /></p>
                 </form>
             </td>
         </tr>
