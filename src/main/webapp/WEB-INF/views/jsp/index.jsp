@@ -15,7 +15,7 @@
         </tr>
         <tr>
             <td>
-                <form method="POST" action="/executeLua">
+                <form method="POST" action="${pageContext.request.contextPath}/executeLua">
                     <p><textarea name="code" cols="40" rows="15"></textarea></p>
                     <p align="center"><input type="submit" value="Execute" /></p>
                 </form>
