@@ -30,7 +30,12 @@ public class ExecuteRest {
         //init
         tarantoolScriptCaller.setConnection16(tarantoolTemplate.getConnection16());
 
-        return (List) tarantoolScriptCaller.executeCode(code);
+        List result = (List) tarantoolScriptCaller.executeCode(code);
+        if (result.isEmpty() && result != null)
+        {
+            result.add("There is no returned value. Watch admin's console!");
+        }
+        return result;
     }
 
 }
